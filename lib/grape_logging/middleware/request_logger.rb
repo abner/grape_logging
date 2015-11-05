@@ -48,7 +48,8 @@ module GrapeLogging
           method: request.request_method,
           total: format_runtime(total_runtime),
           db: format_runtime(db_runtime),
-          status: response[0]
+          status: @app_response.try(:status) || 200
+          #status: response[0]
         )
       end
 
